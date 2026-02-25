@@ -15,3 +15,8 @@ Prereqs: Docker + Docker Compose.
 
 ```bash
 docker compose up --build
+```
+
+
+## Current Status
+Day 1: Local distributed platform scaffold complete.
