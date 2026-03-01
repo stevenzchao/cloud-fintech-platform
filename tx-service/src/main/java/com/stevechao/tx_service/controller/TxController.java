@@ -46,7 +46,7 @@ public class TxController {
         tx.getId(),
         tx.getAmount(),
         tx.getCurrency(),
-        tx.getExternalReference(),
+        tx.getMerchant(),
         tx.getDescription(),
         tx.getStatus(),
         tx.getCreatedAt()

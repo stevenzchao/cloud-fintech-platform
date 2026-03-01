@@ -8,7 +8,7 @@ public record TransactionResponse(
     UUID id,
     BigDecimal amount,
     String currency,
-    String externalReference,
+    String merchant,
     String description,
     String status,
     Instant createdAt

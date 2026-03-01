@@ -32,7 +32,7 @@ class TransactionRepositoryTest {
     TransactionEntity tx = new TransactionEntity();
     tx.setAmount(new BigDecimal("120.50"));
     tx.setCurrency("USD");
-    tx.setExternalReference("ext-123");
+    tx.setMerchant("ext-123");
     tx.setDescription("salary");
     tx.setStatus("CREATED");
 
@@ -46,7 +46,7 @@ class TransactionRepositoryTest {
     TransactionEntity tx = new TransactionEntity();
     tx.setAmount(new BigDecimal("5.00"));
     tx.setCurrency("USD");
-    tx.setExternalReference("ext-456");
+    tx.setMerchant("ext-456");
     tx.setDescription("coffee");
     tx.setStatus("CREATED");
     TransactionEntity saved = transactionRepository.saveAndFlush(tx);

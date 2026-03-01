@@ -46,7 +46,7 @@ public class TransactionService {
     TransactionEntity entity = new TransactionEntity();
     entity.setAmount(request.amount());
     entity.setCurrency(request.currency());
-    entity.setExternalReference(request.externalReference());
+    entity.setMerchant(request.merchant());
     entity.setDescription(request.description());
     entity.setStatus("CREATED");
 
@@ -70,7 +70,7 @@ public class TransactionService {
   }
 
   private String hashRequest(CreateTransactionRequest request) {
-    String payload = request.amount().toPlainString() + "|" + request.currency() + "|" + request.externalReference()
+    String payload = request.amount().toPlainString() + "|" + request.currency() + "|" + request.merchant()
         + "|" + (request.description() == null ? "" : request.description());
 //    System.out.println("payload: " + payload);
     try {

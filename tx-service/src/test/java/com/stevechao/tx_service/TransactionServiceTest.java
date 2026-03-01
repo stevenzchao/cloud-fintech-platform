@@ -50,7 +50,7 @@ class TransactionServiceTest {
     existing.setId(transactionId);
     existing.setAmount(new BigDecimal("10.00"));
     existing.setCurrency("USD");
-    existing.setExternalReference("ext-1");
+    existing.setMerchant("ext-1");
     existing.setDescription("test");
     existing.setStatus("CREATED");
     existing.setCreatedAt(Instant.now());

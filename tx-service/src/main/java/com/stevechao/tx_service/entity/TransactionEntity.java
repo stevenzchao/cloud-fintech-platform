@@ -28,8 +28,8 @@ public class TransactionEntity {
   @Column(nullable = false, length = 3)
   private String currency;
 
-  @Column(name = "external_reference", nullable = false, unique = true, length = 100)
-  private String externalReference;
+  @Column(name = "merchant", nullable = false, length = 100)
+  private String merchant;
 
   @Column(length = 255)
   private String description;
