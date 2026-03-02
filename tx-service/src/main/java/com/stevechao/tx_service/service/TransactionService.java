@@ -59,7 +59,6 @@ public class TransactionService {
       record.setTransactionId(saved.getId());
       idempotencyRecordRepository.save(record);
     }
-
     return saved;
   }
 
