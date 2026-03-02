@@ -20,3 +20,23 @@ docker compose up --build
 
 ## Current Status
 Day 1: Local distributed platform scaffold complete.
+
+Day 2: – First Real Fintech Endpoint
+* Implemented production-grade transaction creation with:
+* POST /api/v1/transactions
+* Idempotency-Key support
+* SHA-256 payload hash validation
+* Conflict detection (409)
+* Flyway-managed schema
+* PostgreSQL integration
+* Transactional integrity
+* Key design decisions:
+* Idempotency handled via separate table
+* Payload consistency enforced via request hashing
+* Database migrations version-controlled
+* Profiles isolated for local/docker/test
+
+Day 3: – Improve Fintech Endpoint Service Layer Stability
+* improve Test Coverage
+* JPA open in view disable
+* add Slf4j log 
