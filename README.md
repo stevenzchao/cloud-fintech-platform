@@ -40,3 +40,7 @@ Day 3: – Improve Fintech Endpoint Service Layer Stability
 * improve Test Coverage
 * JPA open in view disable
 * add Slf4j log 
+
+Day 4: – JWT Skeleton
+* Auth-Server JWT generation skeleton
+* tx-service JWT verification skeleton
