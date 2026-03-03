@@ -6,7 +6,10 @@ import com.stevechao.tx_service.entity.TransactionEntity;
 import com.stevechao.tx_service.service.TransactionService;
 import jakarta.validation.Valid;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Instant;
 import java.util.Map;
 
+@Slf4j
 @RestController
 public class TxController {
 
@@ -33,6 +37,9 @@ public class TxController {
       @Valid @RequestBody CreateTransactionRequest request,
       @RequestHeader(value = "Idempotency-Key", required = false) String idempotencyKey
   ) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String userId = auth.getName();
+    log.info("userId={} action=createTransaction", userId);
     return toResponse(transactionService.create(request, idempotencyKey));
   }
 
