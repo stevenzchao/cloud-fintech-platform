@@ -44,3 +44,9 @@ Day 3: – Improve Fintech Endpoint Service Layer Stability
 Day 4: – JWT Skeleton
 * Auth-Server JWT generation skeleton
 * tx-service JWT verification skeleton
+
+
+  Day 5: – JWT Integration Test
+* JWT integration test
+* Nginx auth header added
+* Flyway migration sql file fixed
