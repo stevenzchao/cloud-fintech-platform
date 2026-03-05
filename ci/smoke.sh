@@ -22,13 +22,13 @@ echo "==> Waiting for tx-service route to be reachable (no 502/503)..."
 # If your tx endpoint is /api/v1/transactions/123, keep it.
 for i in {1..30}; do
   HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
-  if [ "$CODE" != "502" ] && [ "$CODE" != "503" ]; then
+  if [ "$HTTP_CODE" != "502" ] && [ "$HTTP_CODE" != "503" ]; then
     echo "OK: tx route reachable (status=${CODE})"
     break
   fi
   sleep 2
   if [ "$i" -eq 30 ]; then
-    echo "ERROR: tx route still returning ${CODE} after waiting"
+    echo "ERROR: tx route still returning ${HTTP_CODE} after waiting"
     exit 1
   fi
 done
