@@ -54,4 +54,5 @@ Day 5: – JWT Integration Test
 Day 6: – GitHub CI V1
 * Basic access verification add to JWT 
 * Integration test to test basic access
-* Github CI Workflow v1
+* GitHub CI Workflow v1
+* CI Add smoke test & smoke test script
