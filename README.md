@@ -46,7 +46,12 @@ Day 4: – JWT Skeleton
 * tx-service JWT verification skeleton
 
 
-  Day 5: – JWT Integration Test
+Day 5: – JWT Integration Test
 * JWT integration test
 * Nginx auth header added
 * Flyway migration sql file fixed
+
+Day 6: – GitHub CI V1
+* Basic access verification add to JWT 
+* Integration test to test basic access
+* Github CI Workflow v1
