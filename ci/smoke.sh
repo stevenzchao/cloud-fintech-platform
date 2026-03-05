@@ -23,7 +23,7 @@ echo "==> Waiting for tx-service route to be reachable (no 502/503)..."
 for i in {1..30}; do
   HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
   if [ "$HTTP_CODE" != "502" ] && [ "$HTTP_CODE" != "503" ]; then
-    echo "OK: tx route reachable (status=${CODE})"
+    echo "OK: tx route reachable (status=${$HTTP_CODE})"
     break
   fi
   sleep 2
@@ -34,9 +34,9 @@ for i in {1..30}; do
 done
 
 echo "==> Expect 401 when calling secured endpoint without token"
-CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
-if [ "$CODE" != "401" ]; then
-  echo "ERROR: expected 401, got ${CODE}"
+$HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
+if [ "$HTTP_CODE" != "401" ]; then
+  echo "ERROR: expected 401, got ${HTTP_CODE}"
   exit 1
 fi
 echo "OK: missing token rejected (401)"
