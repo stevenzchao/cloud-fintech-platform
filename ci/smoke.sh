@@ -17,12 +17,26 @@ for i in {1..30}; do
   fi
 done
 
-echo "==> Expect 401 when calling secured endpoint without token"
+echo "==> Waiting for tx-service route to be reachable (no 502/503)..."
 # Use an endpoint that exists in tx-service, or use a known secured path even if 404 is okay.
 # If your tx endpoint is /api/v1/transactions/123, keep it.
-HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
-if [ "$HTTP_CODE" != "401" ]; then
-  echo "ERROR: expected 401, got ${HTTP_CODE}"
+for i in {1..30}; do
+  HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
+  if [ "$CODE" != "502" ] && [ "$CODE" != "503" ]; then
+    echo "OK: tx route reachable (status=${CODE})"
+    break
+  fi
+  sleep 2
+  if [ "$i" -eq 30 ]; then
+    echo "ERROR: tx route still returning ${CODE} after waiting"
+    exit 1
+  fi
+done
+
+echo "==> Expect 401 when calling secured endpoint without token"
+CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
+if [ "$CODE" != "401" ]; then
+  echo "ERROR: expected 401, got ${CODE}"
   exit 1
 fi
 echo "OK: missing token rejected (401)"

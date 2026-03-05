@@ -87,7 +87,7 @@ jobs:
         if: failure()
         run:
           docker compose ps
-          docker compose logs --no-color
+          docker compose logs
 
       - name: Shutdown
         if: always()
