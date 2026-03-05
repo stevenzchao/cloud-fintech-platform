@@ -75,7 +75,7 @@ jobs:
     timeout-minutes: 25
     steps:
       - name: Checkout
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
 
       - name: Start stack
         run: docker compose up -d --build
