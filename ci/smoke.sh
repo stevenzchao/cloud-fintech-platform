@@ -23,7 +23,7 @@ echo "==> Waiting for tx-service route to be reachable (no 502/503)..."
 for i in {1..30}; do
   HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}/api/v1/transactions/does-not-matter")
   if [ "$HTTP_CODE" != "502" ] && [ "$HTTP_CODE" != "503" ]; then
-    echo "OK: tx route reachable (status=${$HTTP_CODE})"
+    echo "OK: tx route reachable (status=${HTTP_CODE})"
     break
   fi
   sleep 2
