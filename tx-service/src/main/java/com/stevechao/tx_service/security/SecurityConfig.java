@@ -39,7 +39,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/actuator/health", "/actuator/info").permitAll()
             .requestMatchers("/error").permitAll()
-            .requestMatchers("/v1/**").authenticated()
+            .requestMatchers("/v1/**").hasAnyRole("USER")
             .anyRequest().denyAll()
         )
         .oauth2ResourceServer(oauth2 -> oauth2
@@ -48,6 +48,8 @@ public class SecurityConfig {
             .accessDeniedHandler(deniedHandler)
         )
         .httpBasic(AbstractHttpConfigurer::disable)
+        .formLogin(AbstractHttpConfigurer::disable)
+        .logout(AbstractHttpConfigurer::disable)
         .build();
   }
 
