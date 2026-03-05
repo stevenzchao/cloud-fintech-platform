@@ -102,11 +102,11 @@ public class JwtSecurityMvcTest {
   void test_return403() throws Exception {
     UUID id = UUID.randomUUID();
     List<String> roles = new ArrayList<>();
-    roles.add("ROLE_USERRRRRRR");
+    roles.add("ROLE_GUEST");
     String valid = jwt(Date.from(Instant.now().plusSeconds(3600)),roles);
     mockMvc.perform(get("/v1/transactions/{id}", id)
             .header(HttpHeaders.AUTHORIZATION, "Bearer " + valid))
-        .andExpect(status().isNotFound())
+        .andExpect(status().isForbidden())
         .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.status").value(403))
         .andExpect(jsonPath("$.error").value("FORBIDDEN"))
