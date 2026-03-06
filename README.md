@@ -1,3 +1,4 @@
+[![CI](https://github.com/stevenzchao/cloud-fintech-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/stevenzchao/cloud-fintech-platform/actions/workflows/ci.yml)
 # cloud-fintech-platform
 
 A minimal local platform scaffold to demo cloud + distributed fundamentals (gateway routing, multi-service, DB, health checks).
