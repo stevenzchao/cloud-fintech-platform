@@ -9,6 +9,7 @@ public record ErrorResponse(
     String error,
     String message,
     String path,
-    List<String> details
+    List<String> details,
+    String requestId
 ) {
 }

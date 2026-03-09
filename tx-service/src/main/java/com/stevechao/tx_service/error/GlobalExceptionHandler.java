@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,7 +69,7 @@ public class GlobalExceptionHandler {
   }
 
   private ResponseEntity<ErrorResponse> response(HttpStatus status, String message, String path, List<String> details) {
-    ErrorResponse error = new ErrorResponse(Instant.now(), status.value(), status.getReasonPhrase(), message, path, details);
+    ErrorResponse error = new ErrorResponse(Instant.now(), status.value(), status.getReasonPhrase(), message, path, details, MDC.get("requestId"));
     return ResponseEntity.status(status).body(error);
   }
 }
