@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
+import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
@@ -35,7 +36,8 @@ public class RestAccessDeniedHandler implements AccessDeniedHandler {
         "FORBIDDEN",
         "Insufficient permissions",
         request.getRequestURI(),
-        List.of()
+        List.of(),
+        MDC.get("requestId")
     );
 
     objectMapper.writeValue(response.getOutputStream(), body);

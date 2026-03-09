@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
+import org.slf4j.MDC;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -34,7 +35,8 @@ public class RestAuthEntryPoint implements AuthenticationEntryPoint {
         "UNAUTHORIZED",
         "Missing/invalid token",
         request.getRequestURI(),
-        List.of()
+        List.of(),
+        MDC.get("requestId")
     );
 
     objectMapper.writeValue(response.getOutputStream(), body);
